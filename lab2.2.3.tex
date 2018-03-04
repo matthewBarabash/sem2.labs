@@ -1,0 +1,379 @@
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext}				% русские буквы в фомулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,footskip=1cm,includefoot]
+{geometry}
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+%\usepackage{textcomp}
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков и таблиц текстом
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+
+\usepackage{pgfplots, pgfplotstable}
+\pgfplotsset{compat=1.9}
+
+\usepackage{circuitikz}
+
+\begin{document}	
+	
+\begin{minipage}[l]{0.3\textwidth}
+	\textit{Работу выполнил}\\
+	Просвирин Кирилл, 712гр.\\\\
+	\textit{под руководством}\\
+	А.В. Гаврикова, к.ф.-м.н.
+\end{minipage}
+\hfill
+\begin{minipage}[l]{0.2\textwidth}
+	Маршрут \RomanNumeralCaps{9} \\\\
+	5 февраля 2018~г.,\\
+	12 февраля 2018~г.\\
+\end{minipage}
+\\[20pt]
+\begin{center}
+	\LARGE{\textbf{Лабораторная работа № 2.2.3}\\
+		Определение теплопроводности газов при атмосферном давлении \\[20pt]}
+\end{center}
+
+\textbf{Цель работы: }определение теплопроводности воздуха или 
+углекислого газа при атмосферном давлении и разных температурах по 
+теплоотдаче нагреваемой током нити в цилиндрическом сосуде.\\
+
+\textbf{В работе используется: }Водонагреватель; ММЭС Р4834; эталонное сопротивление 10 Ом; цифровой вольтметр B7-78/1; источник питания GPS-2303 GW INSTEK; 
+термостат LT100.
+
+
+\section{Постановка эксперимента}
+\begin{wrapfigure}{r}{0.5\textwidth}\centering
+	\includegraphics[width=0.5\textwidth]{schemee}
+	\caption{Схема установки}
+\end{wrapfigure}
+Данная лабораторная работа предусматривает следующую методику измерений:
+для разных значений температуры воды, протекающей через кожух, находим
+зависимость падения напряжения $ U_n $ и $ U_0 $. После чего по этим
+данным строим график зависимости $ Q $ от тока подогрева нити~$ I_H $.\\
+
+\noindent\textbf{Обозначения:\\}
+$ R_M $~--- магазин сопротивлений;\\
+$ R_H $~--- сопротивление нити;\\
+$ R_Э $~--- эталонное сопротивление.\\\\
+Нетрудно показать, что если температура среды не зависит от времени, то 
+теплопроводность $ \varkappa $ можно найти из соотношения
+\begin{equation}\label{kappa}
+	\varkappa=\dfrac{Q}{T_1-T_2}\dfrac{1}{2\pi L}\ln{\dfrac{r_2}{r_1}},
+\end{equation}
+где $ r_1 $~--- радиус нити, $ r_2 $~--- радиус цилиндра, 
+$ L $~--- длина цилиндра, $ Q $~--- полный поток тепла,
+$ \Delta T $~--- разность температур газа у поверхности нити и цилиндра.\\\\
+Выделяемая мощность может быть найдена по формуле $ Q=10U_H/U_Э $
+\newpage
+\section{Проведение измерений}
+\begin{enumerate}
+	\item Снимем зависимость напряжения на нити $ U_H $ от напряжении
+	на эталонном сопротивлении $ U_Э $.
+\begin{table}[!h]\centering
+	\begin{tabular}{ccccccccccc}
+		\hline 
+		&\multicolumn{2}{c}{$ T_1=297,8~K $}  
+		&\multicolumn{2}{c}{$ T_2=304~K $}  
+		&\multicolumn{2}{c}{$ T_3=312~K $}  
+		&\multicolumn{2}{c}{$ T_4=322,8~K $}  
+		&\multicolumn{2}{c}{$ T_5	=332,9~K $}  \\ 
+		\hline 
+		$№ $&$ U_0,~B $  &$ U_H,~B $  &$ U_0,~B $  &$ U_H,~B $  
+		&$ U_0,~B $  &$ U_H,~B $  &$ U_0,~B $  &$ U_H,~B $
+		&$ U_0,~B $  &$ U_H,~B $  \\
+		\hline
+		1&0,05  &0,755  
+		&0,05  &0,762  
+		&0,05  &0,766
+		&0,05  &0,774
+		&0,05  &0,782  \\ 
+		2&0,075  &1,134  
+		&0,075  &1,143  
+		&0,075  &1,151
+		&0,075  &1,162
+		&0,075  &1,173  \\ 
+		3&0,1  &1,513  
+		&0,1  &1,524  
+		&0,1  &1,536
+		&0,1  &1,549
+		&0,1  &1,566  \\ 
+		4&0,125  &1,893
+		&0,125  &1,907
+		&0,125  &1,921
+		&0,125  &1,938
+		&0,125  &1,956  \\ 
+		5&0,150  &2,273  
+		&0,150  &2,289
+		&0,150  &2,307
+		&0,150  &2,328
+		&0,150  &2,349  \\ 
+		6&0,2  &3,037
+		&0,2  &3,059
+		&0,2  &3,082
+		&0,2  &3,107
+		&0,2  &3,137  \\
+		7&0,225  &3,421
+		&0,225  &3,446  
+		&0,225  &3,471  
+		&0,225  &3,501
+		&0,225  &3,535  \\ 
+		8&0,25  &2,273  
+		&0,25  &3,848  
+		&0,25  &3,862
+		&0,25  &3,896
+		&0,25  &3,932  \\ 
+		\hline 
+	\end{tabular} 
+\caption{Основные данные измерений}
+\end{table}
+\item По данным из таблицы 1 построим график зависимости
+выделяемой мощности от сопротивления и определим по нему угол наклона
+$ dQ/dR $ и сопротивление нити $ R_0 $ при нулевой выделяемой
+мощности.
+\begin{figure}[!h]\centering\small
+	\begin{tikzpicture}
+	\pgfplotsset{width=15cm,
+		compat=1.3,
+		legend style={font=\footnotesize}}
+	\begin{axis}[
+	xlabel = {$R,~Ом$},
+	ylabel = {$Q, 10^{-1}~Вт$},
+	xmin = 15,
+	ymin = 0,
+	legend cell align=left,
+	legend pos=north west]
+	legend style={at={(0,0)},anchor=north east}
+	
+	\addlegendentry{$ T_1=298~K $}
+	\addplot table[row sep=\\,
+	y={create col/linear regression={y=Y}}] 
+	%input table
+	{
+		X Y\\
+		15.112	0.04\\
+		15.123	0.09\\
+		15.131	0.15\\
+		15.141	0.24\\
+		15.153	0.34\\
+		15.186	0.61\\
+		15.204	0.77\\
+		15.230	0.95\\
+	};
+	\addlegendentry{$ T_2=304~K $}
+	\addplot table[row sep=\\,
+	y={create col/linear regression={y=Y}}] 
+	{
+		X Y\\
+		15.230	0.04\\
+		15.236	0.09\\
+		15.244	0.15\\
+		15.254	0.24\\
+		15.264	0.34\\
+		15.297	0.61\\
+		15.315	0.78\\
+		15.363	0.96\\
+	};
+	\addlegendentry{$ T_4=323~K $}
+	\addplot table[row sep=\\,
+	y={create col/linear regression={y=Y}}] 
+	{
+		X Y\\
+		15.324	0.04\\
+		15.348	0.09\\
+		15.359	0.15\\
+		15.3672	0.24\\
+		15.3773	0.35\\
+		15.4100	0.62\\
+		15.4284	0.78\\
+		15.4464	0.97\\
+	};
+	\addlegendentry{$ T_3=312~K $}
+	\addplot table[row sep=\\,
+	y={create col/linear regression={y=Y}}] 
+	{
+	X Y\\
+	15.481	0.04\\
+	15.487	0.09\\
+	15.493	0.15\\
+	15.502	0.24\\
+	15.517	0.35\\
+	15.543	0.62\\
+	15.560	0.79\\
+	15.586	0.97\\
+	};
+	\addlegendentry{$ T_5=333~K $}
+	\addplot table[row sep=\\,
+	y={create col/linear regression={y=Y}}] 
+	{
+		X Y\\
+		15.632	0.04\\
+		15.637	0.09\\
+		15.659	0.16\\
+		15.653	0.24\\
+		15.662	0.35\\
+		15.693	0.63\\
+		15.711	0.80\\
+		15.728	0.98\\
+	};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{График зависимости сопротивления $ Q(R_H) $}
+\end{figure}
+
+\textbf{Замечание. }
+\item Построим по значениям $ R_0 $ график зависимости сопротивления 
+нити от температуры
+\begin{table}[!h]\centering
+	\begin{tabular}{cccccc}
+		\hline 
+		$ T,~K $& 297,8 & 304 & 312 & 322,8 & 332,9 \\ 
+		\hline 
+		$ R_0,~\Omega $& 15,11 & 15,21 & 15,33 & 15,48 & 15,63 \\ 
+		\hline 
+	\end{tabular} 
+\caption{Значения $ R_0 $ при искомых температурах}
+\end{table}
+
+\begin{figure}[!h]\centering
+	\begin{tikzpicture}
+	\pgfplotsset{width=12cm,
+		compat=1.3,
+		legend style={font=\footnotesize}}
+	\begin{axis}[
+	xlabel = {$T,~K$},
+	ylabel = {$R,~Ом$},
+	legend cell align=left,
+	legend pos=north west]
+	legend style={at={(0,0)},anchor=north east}
+	
+	\addlegendentry{$ 0,0146x + 10,754 $}
+	\addplot table[row sep=\\,
+	y={create col/linear regression={y=Y}}] 
+	%input table
+	{
+		X Y\\
+		297.8	15.11\\
+		304		15.21\\
+		312		15.33\\
+		322.8	15.48\\
+		332.9	15.63\\
+	};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{График зависимости сопротивления $ Q(R_H) $}
+\end{figure}
+Откуда находим угол наклона $ dR/dT=(0,0146\pm 0,0002)~Ом/K $.
+
+\item Для каждой температуры прибора определим значение коэффициента
+теплопроводности газа по формуле \eqref{kappa}.
+\begin{table}[!h]\centering
+	\begin{tabular}{cccccc}
+		\hline 
+		$ T,~K $ & 297,8 & 304 & 312 & 322,8 & 332,9\\
+		\hline\\[-2ex]
+		$ \dfrac{dQ}{dR},~Вт\cdot 10^{-2}/K $ 
+		& 80,0 & 87,3 & 80,6 & 90,9 & 99,2\\[2ex] 
+		\hline \\[-2ex]
+		$ \sigma\left(\dfrac{dQ}{dR}\right),~Вт\cdot 10^{-2}/K $ 
+		& 1,5 & 7,1 & 5 & 1,9 & 6,1\\[2ex]
+		\hline\\[-2ex]
+		$ \varkappa,~Дж\cdot 10^{-2}/K\cdot м $
+		& 2,68 & 2,93 & 2,70 & 3,1 & 3,3\\ 
+		\hline\\[-2ex]
+		$ \sigma\varkappa,~Дж\cdot 10^{-2}/K\cdot м $
+		& 0,06 & 0,24 & 0,07 & 0,2 & 0,2\\ 
+		\hline 
+	\end{tabular} \caption{Расчет коэффициента теплопроводности}
+\end{table}
+
+\item По данным таблицы 3 построим график зависимости теплопроводности
+от температуры. И в предположении, что $ \varkappa=AT^\beta $, найдем 
+показатель степени $ \beta $.
+
+\pgfplotstableread{
+	5.6964	-3.6189
+	5.7170	-3.5315
+	5.7430	-3.6111
+	5.7770	-3.4908
+	5.8078	-3.4040
+}\datatable
+
+\begin{figure}[!h]\centering
+	\pgfplotstableread{
+		X			Y
+		5.69642212	-3.618994248
+		5.717027701	-3.531566343
+		5.743003188	-3.611151071
+		5.777032936	-3.49083597
+		5.807842145	-3.404007861
+	}\datatable
+	
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel = {$\ln T,~K$},
+	ylabel = {$\ln\varkappa,~~Дж/K\cdot м $},
+	width = 0.7\textwidth,
+	height = 0.45\textheight,
+	legend style={at={(0.3,0.98)},anchor=north east}]
+	
+	
+	\addplot [only marks, mark = *] table {\datatable};
+	\addlegendentry{$ 1,70x + 13,31 $}
+	\addplot [thick, blue] table[
+	y={create col/linear regression={y=Y}}
+	] % compute a linear regression from the input table
+	{\datatable};
+	\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
+
+
+\end{enumerate}
+
+Из наклона прямой на графике находим $ \beta=(1,70\pm 0,16) $
+\section{Итоги}
+
+Полученные в результате настоящей лабораторной
+работы значения коэффициента теплопроводности совпадают с табличными
+значениями в пределах погрешности, а графики имеют <<хороший>>, линейный 
+вид $ (\mathfrak{R}\approx0,9775). $\\\\
+\textbf{Комментарий. }Погрешности измерений были 
+подсчитаны в среде \textit{<<OriginPro>>}.
+
+
+
+\end{document}
+
+
+
+
+Длина трубки Т & $L = 64~\cm$ & $\pm 1~\cm$\\
+Поперечное сечение резервуара II &
+$\zeta^2 = (19.5 \times 19.5)~\cm$ & \quad кажд. $\pm 0.2~\cm$ \\
+Эффективная высота резервуара II\quad & $h = 31.5~\cm$ & $\pm 0.2~\cm$ \\
