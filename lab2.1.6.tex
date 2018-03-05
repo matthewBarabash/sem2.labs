@@ -1,0 +1,134 @@
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext}				% русские буквы в фомулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,footskip=1cm,includefoot]
+{geometry}
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+%\usepackage{textcomp}
+%% Номера формул
+\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков и таблиц текстом
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+
+\usepackage{pgfplots, pgfplotstable}
+\pgfplotsset{compat=1.9}
+
+\usepackage{circuitikz}
+
+\begin{document}	
+	
+\begin{minipage}[l]{0.3\textwidth}
+	\textit{Работу выполнил}\\
+	Просвирин Кирилл, 712гр.\\\\
+	\textit{под руководством}\\
+	А.В. Гаврикова, к.ф.-м.н.
+\end{minipage}
+\hfill
+\begin{minipage}[l]{0.2\textwidth}
+	Маршрут \RomanNumeralCaps{9} \\\\
+	19 февраля 2018~г.,\\
+	26 февраля 2018~г.\\
+\end{minipage}
+\\[20pt]
+\begin{center}
+	\LARGE{\textbf{Лабораторная работа № 2.1.6}\\
+		Эффект Джоуля-Томсона \\[20pt]}
+\end{center}
+
+\textbf{Цель работы: }определение изменения температуры углекислого газа
+при протекании через малопроницаемую перегородку при различных начальных
+значенях давления и температуры; вычисление по результатам опытов
+коэффициентов Ван-дер-Ваальса.\\
+
+\textbf{В работе используется: }Термостат, дифференциальная термопара,
+микровольтметр, манометр, установка (баллон, труба и т.д.).
+
+
+\section{Теоретическая справка}
+
+Эффект Джоуля–Томсона — изменение температуры газа, медленно протекающего
+из области высокого в область низкого давления в условиях хорошей тепловой
+изоляции.\\
+
+\noindent В условиях данной лабораторной работы газ проходит через пористую
+перегородку из области с давлением $ P1 $ в область с атмосферным давлением 
+$ P2 $. Рассмотрим стационарный поток между сечениями \RomanNumeralCaps{1}
+и \RomanNumeralCaps{2} до и после перегородки. Считая стенки
+адиабатическими и жёсткими, из закона сохранения энергии получим: 
+\begin{equation}\label{}
+	A_1-A_2=
+	\left(U_2+\dfrac{\mu v_2^2}{2}\right)-
+	\left(U_1+\dfrac{\mu v_1^2}{2}\right),
+\end{equation}
+где $ A_1=P_1V_1 $~--- работа совершенная над газом при прохождении
+через \RomanNumeralCaps{1}, $ A_2=P_2V_2 $~--- работа совершенная над
+газом при прохождении через \RomanNumeralCaps{2}. Тогда
+\begin{equation}\label{}
+	H_1-H_2=\dfrac{1}{2}\mu(v_2^2-v_1^2).
+\end{equation}
+Поскольку скорости по обе стороны от перегородки малы, энтальпию можно
+считать неизменной. Тогда 
+\begin{equation}\label{}
+	\mu_{дт}=\dfrac{\Delta T}{\Delta P}=
+	-\dfrac{(\partial H/\partial P)_T}{(\partial H/\partial T)_P}.
+\end{equation}
+Нетрудно показать, что для идеального газа коэффициент Джоуля–Томсона равен
+нулю, а для газа Ван-дер-Ваальса 
+\begin{equation}\label{}
+	\mu_{дт}=\dfrac{\frac{2a}{RT}-b}{C_P}.
+\end{equation}
+Температура, при которой $ \mu_{дт} $ меняет знак, называют температурой
+инверсии: 
+\begin{equation}\label{}
+	T_{инв}=\dfrac{2a}{Rb}
+\end{equation}
+
+
+\section{Проведение измерений}
+\begin{enumerate}
+	\item 
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
