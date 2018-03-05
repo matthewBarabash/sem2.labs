@@ -1,0 +1,58 @@
+	\begin{tikzpicture}
+		\begin{axis}[ 
+			scale=1.5, 
+			xlabel={$\Delta P,~at$}, 
+			ylabel={$\Delta T,~^\circ С$},
+			domain = 0:5, xmin=0,ymin=0]
+			
+			\addplot[
+				color=black, 
+				only marks, 
+				error bars/.cd, 
+				y dir=both, 
+				y explicit
+			]
+			table[
+				col sep=comma, 
+				x index=0, 
+				y index=1, 
+				y error index=2
+			] {plot1.proc.csv};
+		
+			\addplot[
+				color=gray, 
+				only marks, 
+				error bars/.cd,
+				x dir=both, 
+				x explicit, 
+				y dir=both, 
+				y explicit
+			]
+			table[
+				col sep=comma, 
+				x index=3, 
+				y index=4, 
+				y error index=5
+			] {plot1.proc.csv};
+			
+			\addplot[
+				color=blue, 
+				only marks, 
+				error bars/.cd,
+				x dir=both, 
+				x explicit, 
+				y dir=both, 
+				y explicit
+			]
+			table[
+				col sep=comma, 
+				x index=6, 
+				y index=7, 
+				y error index=8
+			] {plot1.proc.csv};
+			
+			\addplot[color=darkgray] {0.9242*x-0.4822};
+			\addplot[color=darkgray] {0.7537*x-0.4633};
+			\addplot[color=darkgray] {0.6071*x-0.4337};
+		\end{axis}
+	\end{tikzpicture}
