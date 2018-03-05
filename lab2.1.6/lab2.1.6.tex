@@ -47,7 +47,7 @@
 	А.В. Гаврикова, к.ф.-м.н.
 \end{minipage}
 \hfill
-\begin{minipage}[l]{0.2\textwidth}
+\begin{minipage}[l]{0.22\textwidth}
 	Маршрут \RomanNumeralCaps{9} \\\\
 	19 февраля 2018~г.,\\
 	26 февраля 2018~г.\\
@@ -55,7 +55,7 @@
 \\[20pt]
 \begin{center}
 	\LARGE{\textbf{Лабораторная работа № 2.1.6}\\
-		Эффект Джоуля-Томсона \\[20pt]}
+	Эффект Джоуля-Томсона \\[20pt]}
 \end{center}
 
 \textbf{Цель работы: }определение изменения температуры углекислого газа
@@ -107,35 +107,59 @@ $ P2 $. Рассмотрим стационарный поток между се
 \end{equation}
 
 
-\section{Ход работы}
-\begin{enumerate}
-	\item Установим на термостате температуру $ T=24^\circ С $. 
-	\item Откроем регулирующий вентиль и запишем показания 
-	манометра $ \Delta P $~и~вольтметра~$ U $. 
-	\item Снижая давление, $ [\times5~минут] $ будем снимать зависимость
-	показаний манометра и вольтметра.
-\end{enumerate}
+\section{Измерения}	 
+\begin{table}[h]\centering\small
+	\input{opdata.proc.tex}
+	\caption{Зависимость напряжения от перепада давлений}
+	\label{main_table}
+\end{table}
+\noindent Для различных значений температур термостата будем снимать зависимость
+показаний манометра и вольтметра. Данные измерений и их обработки 
+приведены в таблице \ref{main_table}. График зависимости $ \Delta T(\Delta P) $.
 
-\section{Проведение измерений}
-\begin{enumerate}
-	\item Проведем измерения п. 3 при температуре
-	$ T=50^\circ С~и~T=70^\circ С $. Результаты запишем в таблицу \ref{main_table}.
-	
-	\begin{table}[!h]\centering\small
-		\input{opdata.proc.tex}
-		\caption{Зависимость напряжения от перепада давлений}
-		\label{main_table}
-	\end{table}
-\end{enumerate}
-
+\section{Обработка}
+Теперь можно найти коэффициенты Джоуля–Томсона для каждой серии измерений при различных температурах:
 \begin{figure}[h!]
 	\centering
 	\begin{tikzpicture}
-		\begin{axis}[ scale=1.5, xlabel={$H$}, ylabel={$v_p^2$},
-			domain = 0:57, xmin=0,ymin=0]
-			\addplot[color=black, only marks, error bars/.cd, y dir=both, y explicit]
-			table[col sep=comma, y error index=2] {plot1.proc.csv};
-			\addplot[color=darkgray] {43.564992289050451*x-45.15476977307776};
+		\begin{axis}[ 
+			scale=1.5, 
+			xlabel={$\Delta P,~at$}, 
+			ylabel={$\Delta T,~^\circ С$},
+			domain = 0:5, xmin=0,ymin=0]
+			
+			\addplot[
+				color=black, 
+				only marks, 
+				error bars/.cd, 
+				y dir=both, 
+				y explicit
+			]
+			table[
+				col sep=comma, 
+				x index=0, 
+				y index=1, 
+				y error index=2
+			] {plot1.proc.csv};
+		
+			\addplot[
+				color=gray, 
+				only marks, 
+				error bars/.cd,
+				x dir=both, 
+				x explicit, 
+				y dir=both, 
+				y explicit
+			]
+			table[
+				col sep=comma, 
+				x index=3, 
+				y index=4, 
+				y error index=5
+			] {plot1.proc.csv};
+			
+			\addplot[color=darkgray] {0.9242*x-0.4822};
+			\addplot[color=darkgray] {0.7537*x-0.4633};
 		\end{axis}
 	\end{tikzpicture}
 \end{figure}
@@ -146,6 +170,7 @@ $ P2 $. Рассмотрим стационарный поток между се
 
 
 
+	
 
 
 
