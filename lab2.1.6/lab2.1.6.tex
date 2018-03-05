@@ -107,31 +107,39 @@ $ P2 $. Рассмотрим стационарный поток между се
 \end{equation}
 
 
-\section{Проведение измерений}
+\section{Ход работы}
 \begin{enumerate}
 	\item Установим на термостате температуру $ T=24^\circ С $. 
 	\item Откроем регулирующий вентиль и запишем показания 
 	манометра $ \Delta P $~и~вольтметра~$ U $. 
-	\item Снижая давление, $ [x5~минут] $ будем снимать зависимость
+	\item Снижая давление, $ [\times5~минут] $ будем снимать зависимость
 	показаний манометра и вольтметра.
-	\item Проведем измерения п. 3 при температуре
-	$ T=50^\circ С~и~T=70^\circ С $. Результаты запишем в таблицу \ref{main_table}.
 \end{enumerate}
 
-\begin{table}[!h]\centering
-	\begin{tabular}{cccc|cccc|cccc}
-		\toprule
-		dP, атм & U(P), мкВ & E    & dT   & dP, атм & U(P)   & E     & dT   & dP, атм & U(P)   & E    & dT          \\\midrule
-		4,1     & 0,14      & 135  & 3,31 & 4       & 0,117  & 107,5 & 2,50 & 4       & 0,0971 & 87,1 & 1,95 \\
-		3,51    & 0,121     & 116  & 2,84 & 3,5     & 0,1052 & 95,7  & 2,23 & 3,5     & 0,0872 & 77,2 & 1,73 \\
-		2,7     & 0,0841    & 79,1 & 1,94 & 2,7     & 0,0781 & 68,6  & 1,59 & 2,7     & 0,0659 & 55,9 & 1,25 \\
-		2       & 0,0573    & 52,3 & 1,28 & 2       & 0,0521 & 42,6  & 0,99 & 2       & 0,041  & 31   & 0,69 \\
-		1       & 0,0261    & 21,1 & 0,52 & 1       & 0,0225 & 13    & 0,30 & 1       & 0,0189 & 8,9  & 0,2  \\
-		\bottomrule      
-	\end{tabular}
-\caption{My caption}
-\label{main_table}
-\end{table}
+\section{Проведение измерений}
+\begin{enumerate}
+	\item Проведем измерения п. 3 при температуре
+	$ T=50^\circ С~и~T=70^\circ С $. Результаты запишем в таблицу \ref{main_table}.
+	
+	\begin{table}[!h]\centering\small
+		\input{opdata.proc.tex}
+		\caption{Зависимость напряжения от перепада давлений}
+		\label{main_table}
+	\end{table}
+\end{enumerate}
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[ scale=1.5, xlabel={$H$}, ylabel={$v_p^2$},
+			domain = 0:57, xmin=0,ymin=0]
+			\addplot[color=black, only marks, error bars/.cd, y dir=both, y explicit]
+			table[col sep=comma, y error index=2] {plot1.proc.csv};
+			\addplot[color=darkgray] {43.564992289050451*x-45.15476977307776};
+		\end{axis}
+	\end{tikzpicture}
+\end{figure}
+
 
 \end{document}
 
