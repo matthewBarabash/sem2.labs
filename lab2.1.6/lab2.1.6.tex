@@ -106,83 +106,98 @@ $ P2 $. Рассмотрим стационарный поток между се
 	T_{инв}=\dfrac{2a}{Rb}
 \end{equation}
 
+\section{Экспериментальная установка}
+\begin{figure}[!h]
+	\begin{wrapfigure}[50]{l}{0.66\textwidth}\centering
+		\includegraphics[width=0.7\textwidth]{scheme}
+		\caption{Схема установки} 
+	\end{wrapfigure}
+	
+	\textbf{Оборудование:}
+	\begin{enumerate}
+		\item Трубка
+		\item Пористая перегородка
+		\item Труба Дьюара
+		\item Кольцо
+		\item Змеевик
+		\item Балластной балон
+		\item Цифровой вольтметр
+		\item 9.~~Спаи
+		\setcounter{enumi}{9}
+		\item Пробка
+	\end{enumerate}
+\end{figure}
+\textbf{\\[1ex]Описание установки. }Рамка 1 жестко соединена с
+проволокой 2, закрепленной вертикально в специальных зажимах 3,
+позволяющих сообщить начальное закручивание для возбуждения крутильных
+колебаний вокруг вертикальной оси. В рамке с помощью планки 4,
+гаек 5 и винта 6 закрепляется твердое тело 7.
 
 \section{Измерения}	 
 \begin{table}[h]\centering\small
-	\input{opdata.proc.tex}
+	\input{main_table.tex}
 	\caption{Зависимость напряжения от перепада давлений}
 	\label{main_table}
 \end{table}
 \noindent Для различных значений температур термостата будем снимать зависимость
 показаний манометра и вольтметра. Данные измерений и их обработки 
-приведены в таблице \ref{main_table}. График зависимости $ \Delta T(\Delta P) $.
+приведены в таблице \ref{main_table}.
 
-\section{Обработка}
-Теперь можно найти коэффициенты Джоуля–Томсона для каждой серии измерений при различных температурах:
-\begin{figure}[h!]
-	\centering
-	\begin{tikzpicture}
-		\begin{axis}[ 
-			scale=1.5, 
-			xlabel={$\Delta P,~at$}, 
-			ylabel={$\Delta T,~^\circ С$},
-			domain = 0:5, xmin=0,ymin=0]
-			
-			\addplot[
-				color=black, 
-				only marks, 
-				error bars/.cd, 
-				y dir=both, 
-				y explicit
-			]
-			table[
-				col sep=comma, 
-				x index=0, 
-				y index=1, 
-				y error index=2
-			] {plot1.proc.csv};
-		
-			\addplot[
-				color=gray, 
-				only marks, 
-				error bars/.cd,
-				x dir=both, 
-				x explicit, 
-				y dir=both, 
-				y explicit
-			]
-			table[
-				col sep=comma, 
-				x index=3, 
-				y index=4, 
-				y error index=5
-			] {plot1.proc.csv};
-			
-			\addplot[color=darkgray] {0.9242*x-0.4822};
-			\addplot[color=darkgray] {0.7537*x-0.4633};
-		\end{axis}
-	\end{tikzpicture}
+\begin{figure}[h!]\centering
+	\input{graph.tex}
+	\caption{График зависимости $ \Delta T(\Delta P) $}
 \end{figure}
 
-
+\section{Обработка}
+Из данных эксперимента несложно рассчитать величины $ \mu_{ДТ} $:
+\begin{align}
+	\begin{array}{ccc}
+		Эксперимент && Табличные данные\\
+		\mu_{24}=(0,92\pm0,09)~{K}/{at} && 1,11~K/at\\ 
+		\mu_{50}=(0,75\pm0,05)~{K}/{at} &~в~сравнении~с~ & 0,84~K/at\\ 
+		\mu_{70}=(0,61\pm0,09)~{K}/{at} && 0,74~K/at\\ 
+	\end{array}
+\end{align}
+Приведем формулы для подсчета коэффициентов и их погрешностей
+\[
+	a=\dfrac{RC_P}{2}\dfrac{\mu_1-\mu_2}{\frac{1}{T_1}-\frac{1}{T_2}},
+	~~~
+	b=C_p\dfrac{\mu_1T_1-\mu_2T_2}{T_2-T_1};
+\]
+\[
+	\Delta a=\dfrac{RC_p}{2}
+	\dfrac{\sqrt{\sigma_{\mu_1}^2+\sigma_{\mu_2}^2}}
+	{\frac{1}{T_1}+\frac{1}{T_2}},
+	~~~
+	\Delta b=C_P=\dfrac{
+		\sqrt{\sigma_{\mu_1}^2T_1^2+\sigma_{\mu_2}^2T_2^2}}{T_2-T_1}
+\]
+\[
+	\Delta T_{инв}=T_{инв}
+	\sqrt{\left(\dfrac{\Delta a}{a}\right)^2+
+		\left(\dfrac{\Delta b}{b}\right)^2}
+\]
+Теперь можно найти коэффициенты Джоуля–Томсона для каждой серии измерений при различных температурах:
+\begin{table}[h]	\centering
+	\begin{tabular}{c|ccc}
+		\toprule
+		& $ [24;50]^\circ С $ 
+		& $ [24;70]^\circ С $ 
+		& $ [50;70]^\circ С $ \\
+		\midrule
+		$ a,~\frac{H\cdot м^4}{моль^2} $       
+		& $ 1,49\pm0,8 $ & $ 1,66\pm0,5 $ & $ 1,92\pm0,7 $ \\[4pt]
+		$ b,~\frac{м^3}{моль} $       
+		& $ 346\pm237 $ & $ 418\pm130 $  & $ 511\pm279 $ \\[4pt]
+		$ T_{инв},~K $       
+		& $ 1053\pm925 $ & $ 975\pm419 $ & $ 922\pm621 $\\
+		$ T_{кр},~K $       
+		& $ 156\pm127 $ & $ 144\pm62 $ & $ 136\pm92 $\\
+		\bottomrule
+	\end{tabular}
+	\caption{Коэффициенты Джоуля–Томсона}
+	\label{my-label}
+\end{table}
+\section{Выводы}
+Все порядки выдержаны, но в искомую $ \sigma $ ничего не попадает.
 \end{document}
-
-
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
