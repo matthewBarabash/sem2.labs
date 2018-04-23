@@ -1,0 +1,139 @@
+\documentclass[a4paper,12pt]{article} % добавить leqno в [] для нумерации слева
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext}				% русские буквы в фомулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,footskip=1cm,includefoot]
+{geometry}
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+%\usepackage{textcomp}
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+	{\hbox{$\mathsurround=0pt #1$}}{}}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков и таблиц текстом
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+
+\usepackage{pgfplots, pgfplotstable}
+\pgfplotsset{compat=1.9}
+
+\usepackage{circuitikz}
+
+\begin{document}	
+	
+\begin{minipage}[l]{0.3\textwidth}
+	\textit{Работу выполнил}\\
+	Просвирин Кирилл, 712гр.\\\\
+	\textit{под руководством}\\
+	А.В. Гаврикова, к.ф.-м.н.
+\end{minipage}
+\hfill
+\begin{minipage}[l]{0.2\textwidth}
+	Маршрут \RomanNumeralCaps{9} \\\\
+	12 апреля 2018~г.,\\
+	18 фпреля 2018~г.\\
+\end{minipage}
+\\[20pt]
+\begin{center}
+	\LARGE{\textbf{Лабораторная работа № 2.3.1Ф}\\
+		Получение и измерение вакуума \\[20pt]}
+\end{center}
+
+\textbf{Цель работы: }1) измерение объемов форвакуумной и 
+высоковакуумной частей установки ; 2) определение скорости
+откачки системы в стационарном режиме, а также по
+ухудшению и по улучшению вакуума.\\
+
+\textbf{В работе используется: }
+Компактный безмасляный высоковакуумный Pfeiffer Vacuum серии
+HiCube 80 Eco, вакууметр Pfeiffer Vacuum серии DigiLine и
+вакуумные компоненты типов ISO-K, ISO-F, ISO-KF. .
+
+
+\section{Экспериментальная установка}
+\begin{figure}[!h]
+	\begin{wrapfigure}[50]{l}{0.5\textwidth}
+		\vspace{-4ex}
+		\includegraphics[width=0.45\textwidth]{scheme}
+		\caption{Схема установки} 
+	\end{wrapfigure}
+	
+	\textbf{Оборудование:}
+	\begin{enumerate}
+		\item БУ — блок управления
+		\item ДН
+		— диафрагменный насос
+		\item ТМН — турбомолекулярный насос
+		\item К
+		— вакуумная камера
+		\item ШЗ
+		— шиберный затвор
+		\item МК1-3 — мембранные краны
+		\item В1
+		— терморезистоный вакууметр
+		\item В2
+		— комбинированный вакууметр
+		\item КН
+		— кран-натекатель
+		\item З
+		— заглушка
+		\item Д
+		— диафрагма
+	\end{enumerate}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
